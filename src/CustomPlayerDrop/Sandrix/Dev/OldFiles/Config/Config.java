@@ -145,13 +145,13 @@ public class Config {
 				config.set("ExtraDrop.20.amount", 1);
 				config.set("ExtraDrop.20.meta.==",  "ItemMeta");
 				config.set("ExtraDrop.20.meta.meta-type",  "UNSPECIFIC");
-				config.set("ExtraDrop.20.meta.display-name",  "&5&lSoul §dfragment");
+				config.set("ExtraDrop.20.meta.display-name",  "&5&lSoul Â§dfragment");
 				List<String> list = new ArrayList<String>();
 				list.add("");
-				list.add("&b§lCustom Player Drop");
+				list.add("&bÂ§lCustom Player Drop");
 				list.add("");
-				list.add("§fA piece of a §dplayer's soul");
-				list.add("§c§nbe careful! §fit may break.");
+				list.add("Â§fA piece of a Â§dplayer's soul");
+				list.add("Â§cÂ§nbe careful! Â§fit may break.");
 				list.add("");
 				config.set("ExtraDrop.20.meta.lore",  list);
 				config.set("ExtraDrop.20.meta.enchants.KNOCKBACK",  1);
@@ -175,7 +175,7 @@ public class Config {
 			System.out.print("[CustomPlayerDrop] Plugin set to false!");
 			return;
 		}
-		permMessage = config.getString("permissionMessage").replaceAll("&", "§");
+		permMessage = config.getString("permissionMessage").replaceAll("&", "Â§");
 		PlayerKillonly = config.getBoolean("PlayerKillonly");
 		NonPlayerKiller = config.getString("NonPlayerKiller");
 		DropPlayerInventory = config.getBoolean("DropPlayerInventory");
