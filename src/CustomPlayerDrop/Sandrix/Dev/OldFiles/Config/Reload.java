@@ -9,10 +9,10 @@ public class Reload implements CommandExecutor{
 			if(s.hasPermission("CustomPlayerDrop.admin")) {
 				if(s3.length == 1 && s3[0] != null && s3[0].equalsIgnoreCase("reload")) {
 					Config.Reload();
-					s.sendMessage("งa[CustomPlayerDrop] Config reloaded!");
+					s.sendMessage("ยงa[CustomPlayerDrop] Config reloaded!");
 				}
 				else {
-					s.sendMessage("ง4[CustomPlayerDrop] Correct usage /CustomPlayerDrop reload");
+					s.sendMessage("ยง4[CustomPlayerDrop] Correct usage /CustomPlayerDrop reload");
 				}
 			}
 			else {
