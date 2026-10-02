@@ -16,11 +16,14 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import CustomPlayerDrop.Sandrix.Dev.config.PluginConfig;
 import CustomPlayerDrop.Sandrix.Dev.config.PluginConfig.ItemDrop;
+import CustomPlayerDrop.Sandrix.Dev.service.DropService;
 
 public class PlayerDeathListener implements Listener {
   private final PluginConfig config;
+  private final DropService dropService;
   public PlayerDeathListener(PluginConfig config) {
     this.config = config;
+    this.dropService = new DropService(config);
   }
 
   @EventHandler
@@ -44,12 +47,8 @@ public class PlayerDeathListener implements Listener {
     }
     
     executeExtraCommands(player, killer);
-    if (!config.shouldDropPlayerInventory()) {
-      event.getDrops().clear();
-    }
-    if (config.shouldDropPlayerHead() && roll(config.getHeadDropRate())) {
-      dropPlayerHead(player, killer, location);
-    }
+    dropService.giveDrops(player, killer);
+    
     if (config.isExtraDropEnabled()) {
       dropExtraItems(player, killer, location);
     }
@@ -80,13 +79,6 @@ public class PlayerDeathListener implements Listener {
       }
   }
 
-  private void dropPlayerHead(Player player, Player killer, Location location) {
-    ItemStack head = new ItemStack(Material.PLAYER_HEAD);
-    SkullMeta meta = (SkullMeta) head.getItemMeta();
-    if (meta == null) {
-      return;
-    }
-
     meta.setOwningPlayer(player);
     String killerName = killer != null ? killer.getName() : config.getNonPlayerKiller();
     
@@ -97,13 +89,6 @@ public class PlayerDeathListener implements Listener {
     head.setItemMeta(meta);
     location.getWorld().dropItemNaturally(location, head);
   }
-
-  private void dropExtraItems(Player player, Player killer, Location location) {
-    String killerName = killer != null ? killer.getName() : config.getNonPlayerKiller();
-    for (ItemDrop configuredDrop : config.getExtraDrops()) {
-      if (!roll(configuredDrop.getRate())) {
-        continue;
-      }
       /*
       * Clone the configured ItemStack
       *
@@ -137,27 +122,5 @@ public class PlayerDeathListener implements Listener {
 
   private void giveMoney(Player killer) {
     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "eco give " + killer.getName() + " " + config.getMoneyGiveCount());
-  }
-
-  private String replacePlaceholders(String text, Player player, Player killer) {
-    return replacePlaceholders(text, player, killer != null ? killer.getName() : config.getNonPlayerKiller());
-  }
-
-  private String replacePlaceholders(String text, Player player, String killerName) {
-    return text.replace("{player}", player.getName()).replace("{killer}", killerName);
-  }
-
-  private String format(String text) {
-    return text.replace("&", "§");
-  }
-
-  private boolean roll(int percentage) {
-    if (percentage <= 0) {
-      return false;
-    }
-    if (percentage >= 100) {
-      return true;
-    }
-    return ThreadLocalRandom.current().nextInt(100) < percentage;
   }
 }
