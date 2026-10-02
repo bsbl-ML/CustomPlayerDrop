@@ -16,3 +16,7 @@ permissions:
   customplayerdrop.admin:
     description: Allows access to CustomPlayerDrop administrative commands
     default: op
+
+  customplayerdrop.enabled:
+    description: Allows CustomPlayerDrop drops to apply to the player
+    default: true
