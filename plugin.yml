@@ -8,8 +8,8 @@ description: Revised plugin for custom player drop (Celestiql SMP)
 
 commands:
   customplayerdrop:
-    description: Command to reload config
-    usage: /customplayerdrop reload
+    description: Manage CustomPlayerDrop (reload config or test drop features)
+    usage: /customplayerdrop <reload|give>
     permission: customplayerdrop.admin
 
 permissions:
