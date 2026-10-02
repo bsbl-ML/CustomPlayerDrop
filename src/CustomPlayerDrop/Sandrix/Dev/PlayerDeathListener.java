@@ -21,9 +21,9 @@ import CustomPlayerDrop.Sandrix.Dev.service.DropService;
 public class PlayerDeathListener implements Listener {
   private final PluginConfig config;
   private final DropService dropService;
-  public PlayerDeathListener(PluginConfig config) {
+  public PlayerDeathListener(PluginConfig config, DropService dropService) {
     this.config = config;
-    this.dropService = new DropService(config);
+    this.dropService = dropService;
   }
 
   @EventHandler
