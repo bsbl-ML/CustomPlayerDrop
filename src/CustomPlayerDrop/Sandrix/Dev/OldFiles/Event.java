@@ -74,17 +74,17 @@ public class Event implements Listener{
 		meta.setOwner(p.getName());
 		ArrayList<String> lore = new ArrayList<String>();
 		if(k==null) {
-			meta.setDisplayName(Config.HeadName.replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", Config.NonPlayerKiller));
+			meta.setDisplayName(Config.HeadName.replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", Config.NonPlayerKiller));
 		}
 		else {
-			meta.setDisplayName(Config.HeadName.replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName()));
+			meta.setDisplayName(Config.HeadName.replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName()));
 		}		
 		for(int i=0; i< Config.HeadLore.size(); i++) {
 			if(k==null) {
-				lore.add(Config.HeadLore.get(i).replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}",Config.NonPlayerKiller));
+				lore.add(Config.HeadLore.get(i).replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}",Config.NonPlayerKiller));
 			}
 			else {
-				lore.add(Config.HeadLore.get(i).replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName()));
+				lore.add(Config.HeadLore.get(i).replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName()));
 			}			
 		}
 		meta.setLore(lore);
@@ -101,21 +101,21 @@ public class Event implements Listener{
 				ItemStack IS = Config.items.get(i);
 				ItemMeta IM = Config.items.get(i).getItemMeta();
 				if(k==null) {
-					String im = IM.getDisplayName().replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", Config.NonPlayerKiller);
+					String im = IM.getDisplayName().replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", Config.NonPlayerKiller);
 					IM.setDisplayName(im);
 				}
 				else {
-					String im = IM.getDisplayName().replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName());
+					String im = IM.getDisplayName().replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName());
 					IM.setDisplayName(im);
 				}
 				List<String> list = IM.getLore();
 				for(int j = 0; j<list.size();j++) {
 					if(k==null) {
-						String im = list.get(j).replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", Config.NonPlayerKiller);
+						String im = list.get(j).replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", Config.NonPlayerKiller);
 						list.set(j, im);
 					}
 					else {
-						String im = list.get(j).replaceAll("&", "ง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName());
+						String im = list.get(j).replaceAll("&", "ยง").replaceAll("\\{player}", p.getName()).replaceAll("\\{killer}", k.getName());
 						list.set(j, im);
 					}
 				}
