@@ -1,4 +1,4 @@
-package CustomPlayerDrop..config;
+package CustomPlayerDrop.Sandrix.Dev.config;
 
 import java.io.File;
 import java.io.IOException;
