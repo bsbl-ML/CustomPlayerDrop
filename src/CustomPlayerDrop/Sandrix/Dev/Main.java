@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import CustomPlayerDrop.Sandrix.Dev.command.ReloadCommand;
 import CustomPlayerDrop.Sandrix.Dev.config.PluginConfig;
 import CustomPlayerDrop.Sandrix.Dev.listener.PlayerDeathListener;
+import CustomPlayerDrop.Sandrix.Dev.service.DropService;
 
 public class Main extends JavaPlugin{
 	private PluginConfig pluginConfig;
@@ -12,9 +13,10 @@ public class Main extends JavaPlugin{
 	@Override
 	public void onEnable(){
 		pluginConfig = new PluginConfig(this);
-		getServer().getPluginManager().registerEvents(new PlayerDeathListener(pluginConfig), this);
+		DropService dropService = new DropService(pluginConfig);
+		getServer().getPluginManager().registerEvents(new PlayerDeathListener(pluginConfig, dropService), this);
 		if (getCommand("CustomPlayerDrop") != null) {
-			getCommand("CustomPlayerDrop").setExecutor(new ReloadCommand(pluginConfig));
+			getCommand("CustomPlayerDrop").setExecutor(new ReloadCommand(pluginConfig, dropService));
 		}
 		getLogger().info("CustomPlayerDrop has been enabled!");
 		Config.CheckConfig();
