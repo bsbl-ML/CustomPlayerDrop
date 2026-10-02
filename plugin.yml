@@ -1,8 +1,18 @@
 name: CustomPlayerDrop
+version: 2.0.0
 main: CustomPlayerDrop.Sandrix.Dev.Main
-author: Sandrix33
-version: 1.5
-description: Plugin for custom player drop
+api-version: '1.21'
+
+authors: [Sandrix33, bsbl-ML]
+description: Revised plugin for custom player drop (Celestiql SMP)
+
 commands:
   CustomPlayerDrop:
-    description: Commands for reload config 
+    description: Command to reload config
+    usage: /CustomPlayerDrop reload
+    permission: CustomPlayerDrop.admin
+
+permissions:
+  CustomPlayerDrop.admin:
+    description: Allows access to CustomPlayerDrop administrative commands
+    default: op
