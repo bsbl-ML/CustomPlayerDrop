@@ -1,5 +1,5 @@
 name: CustomPlayerDrop
-version: 2.0.0
+version: '${version}' # pull version number from gradle.properties
 main: CustomPlayerDrop.Sandrix.Dev.Main
 api-version: '1.21'
 
