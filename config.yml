@@ -1,16 +1,16 @@
-#Creator: Sandrix33
-#Permission: 
-#User: "CustomPlayerDrop.enabled"
-#Admin: "CustomPlayerDrop.admin"
+#Creators: Sandrix33 and ItsWqlfy
+#Permission:
+#User: "customplayerdrop.enabled"
+#Admin: "customplayerdrop.admin"
 #DO NOT CHANGE very important!
-Version: 1.5
+Version: 1.3
 #true = plugin enabled
 #false = plugin disabled
 CustomPlayerDrop: true
-permissionMessage: '&cYou are not allowed' 
+permissionMessage: '&cYou are not allowed'
 #true = Plugin works at player kills
 #false = Plugin works at any kills
-PlayerKillonly: false
+PlayerKillonly: true
 #{killer} placeholder for non-player kills
 NonPlayerKiller: 'Something'
 #true = Players drop their inventories
@@ -21,31 +21,32 @@ DropPlayerInventory: true
 DropPlayerHead: true
 HeadName: '&e{player}''s head'
 HeadLore:
-- ''
-- '&b&lCustom Player Drop'
-- ''
-- '&fYou can drop enemies heads'
-- '&fby killing them.'
-- ''
-- '&cKilled by &4&l{killer}'
+  - ''
+  - '&b&lCustom Player Drop'
+  - ''
+  - '&7The &csevered head &7of an &5enemy'
+  - '&8Claimed through &4blood &8and &6battle.'
+  - ''
+  - '&cSlain by &4&l{killer}'
 #Chances to drop a player's head (in %)
 HeadDropRate: 100
 #true = plugin works only in a specific world
 #false = plugin works everywhere
 SpecificWorldOnly: false
 Worlds:
-- world
-- world_nether
+  - world
+  - world_nether
+  # - world_the_end
 #true = drop a specific ammount of xp to killer
 #false = drop player's xp (vanilla be like)
-XpOnKill: false
+XpOnKill: true
 #XP to give (not levels) - set to 0 no xp drop
 XpGiveCount: 100
-#true = give a specific ammount of money to killer (Essentials is needed)
+#true = give a specific amount of money to killer (Essentials is needed)
 #false = don't
-MoneyOnKill: false
-MoneyGiveCount: 100
-#true = drop extra items on player's death 
+MoneyOnKill: true
+MoneyGiveCount: 250
+#true = drop extra items on player's death
 #false = don't
 EnableExtraDrop: true
 #100 is used as name of the item and determines chance of drop (follow the same itemstack as example)
@@ -57,20 +58,26 @@ ExtraDrop:
     meta:
       ==: ItemMeta
       meta-type: UNSPECIFIC
-      display-name: '&5&lSoul §dfragment'
+      display-name: '&5&lSoul Fragment'
       lore:
-      - ''
-      - '&b§lCustom Player Drop'
-      - ''
-      - '§fA piece of a §dplayer''s soul'
-      - '§c§nbe careful! §fit may break.'
-      - ''
+        - ''
+        - '&b&lCustom Player Drop'
+        - ''
+        - '&7Essence of &d{player}&7, bound in crystal'
+        - '&7It pulses faintly... &5hungering for vengeance.'
+        - ''
+        - '&8Whispers speak of a &dsecret place&8...'
+        - '&6where &osouls&r&6 are redeemed.'
+        - ''
       enchants:
-        KNOCKBACK: 1
+        KNOCKBACK: 3
       Unbreakable: true
-#true = to execute extra commands on player death 
+#true = to execute extra commands on player death
 #false = don't
-EnableExtraCommands: false
+EnableExtraCommands: true
 ExtraCommands:
-- effect give {killer} jump_boost 10 5
-- tell {killer} &a&lYou have been rewarded with &b&nJump Boost V
+  #Hypixel Skywars gives strength 1 5s, absorption 1 7s, regen 1 10s after kill
+  - effect give {killer} absorption 7 0 false
+  - effect give {killer} regeneration 10 0 false
+  - effect give {killer} strength 5 0 false
+  - tell {killer} &a&lYou have been given $250.
